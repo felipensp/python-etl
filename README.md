@@ -1,2 +1,49 @@
 # regex-etl
 ETL tool written in Python using Regex rules as DSL to generate python parsing scripts
+
+## DSL
+
+```
+/(pattern)/ {
+    // Python code to run when pattern matches
+    // We can use $1, $2, $N to refer to the matching group
+}
+```
+
+# Examples
+
+## ETL file (basically a Python script)
+
+```
+result = []
+/(?m:^)(\d{3})-([a-z]+)/ {
+    result.append({"number": int($1), "description": 'good' if $2 == 'foo' else 'bad'})
+}
+/(\d+)/ {
+    result.append({"number": int($1)})
+}
+print(result)
+```
+
+## Using stdin in command-line
+
+```
+>python regex-etl.py test.etl
+123
+^Z
+[{'number': 123}]
+```
+
+```
+>python regex-etl.py test.etl
+123-foo
+^Z
+[{'number': 123, 'description': 'good'}, {'number': 123}]
+```
+
+## Using payload input file
+
+```
+>type test\payload | python regex-etl.py test.etl
+[{'number': 123, 'description': 'good'}, {'number': 1337}, {'number': 123}, {'number': 456}, {'number': 777}]
+```

@@ -1,0 +1,11 @@
+result = []
+
+/(?m:^)(\d{3})-([a-z]+)/ {
+    result.append({"number": int($1), "description": 'good' if $2 == 'foo' else 'bad'})
+}
+
+/(\d+)/ {
+    result.append({"number": int($1)})
+}
+
+print(result)
