@@ -47,3 +47,23 @@ print(result)
 >type test\payload | python regex-etl.py test.etl
 [{'number': 123, 'description': 'good'}, {'number': 1337}, {'number': 123}, {'number': 456}, {'number': 777}]
 ```
+
+## Processing CSV file
+
+#### ETL file
+```
+<csv> {
+   print($1)
+}
+```
+
+### Testing in command line
+
+```
+> python regex-etl.py csv.etl
+id,name
+1,felipe
+^Z
+name
+felipe
+```
