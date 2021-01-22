@@ -1,5 +1,5 @@
 # regex-etl
-ETL tool written in Python using Regex rules as DSL to generate python parsing scripts
+ETL tool written in Python using Regex rules as DSL to generate python parsing scripts.
 
 ## DSL
 
@@ -8,11 +8,18 @@ ETL tool written in Python using Regex rules as DSL to generate python parsing s
     // Python code to run when pattern matches
     // We can use $1, $2, $N to refer to the matching group
 }
+
+or
+
+<csv> {
+    // Python code to run on every csv row
+    // We can use $0, $1, $N to refer to csv column index
+}
 ```
 
 # Examples
 
-## ETL file (basically a Python script)
+#### ETL file
 
 ```
 result = []
@@ -25,7 +32,7 @@ result = []
 print(result)
 ```
 
-## Using stdin in command-line
+### Using stdin in command-line
 
 ```
 >python regex-etl.py test.etl
@@ -41,7 +48,7 @@ print(result)
 [{'number': 123, 'description': 'good'}, {'number': 123}]
 ```
 
-## Using payload input file
+### Using payload input file
 
 ```
 >type test\payload | python regex-etl.py test.etl
