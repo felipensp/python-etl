@@ -1,5 +1,5 @@
-# regex-etl
-ETL tool written in Python using Regex rules as DSL to generate python parsing scripts.
+# python-etl
+ETL tool written in Python that provides an specific DSL which is translated to Python script to handle input data.
 
 ## DSL
 
