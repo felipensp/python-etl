@@ -35,14 +35,14 @@ print(result)
 ### Using stdin in command-line
 
 ```
->python regex-etl.py test.etl
+>python python-etl.py test.etl
 123
 ^Z
 [{'number': 123}]
 ```
 
 ```
->python regex-etl.py test.etl
+>python python-etl.py test.etl
 123-foo
 ^Z
 [{'number': 123, 'description': 'good'}, {'number': 123}]
@@ -51,7 +51,7 @@ print(result)
 ### Using payload input file
 
 ```
->type test\payload | python regex-etl.py test.etl
+>type test\payload | python python-etl.py test.etl
 [{'number': 123, 'description': 'good'}, {'number': 1337}, {'number': 123}, {'number': 456}, {'number': 777}]
 ```
 
@@ -67,7 +67,7 @@ print(result)
 ### Testing in command line
 
 ```
-> python regex-etl.py csv.etl
+> python python-etl.py csv.etl
 id,name
 1,felipe
 ^Z
